@@ -1,4 +1,10 @@
-const { moveLeft, moveRight, moveUp, moveDown } = require("../movement");
+const {
+  moveLeft,
+  moveRight,
+  moveUp,
+  moveDown,
+  objectHitCheckAndPrint,
+} = require("../movement");
 
 describe("Test the movement functions", () => {
   describe("The move left function", () => {
@@ -52,6 +58,17 @@ describe("Test the movement functions", () => {
       const currentPosition = { x: 5, y: 0 };
 
       expect(moveDown(currentPosition)).toEqual({ x: 5, y: 0 });
+    });
+  });
+
+  describe("Check if there is an object in new position function", () => {
+    it("Return true and alert `Ouch!` if there is an object", () => {
+      const objects = [
+        { x: 1, y: 2 },
+        { x: 4, y: 3 },
+      ];
+      const newPosition = { x: 4, y: 3 };
+      expect(objectHitCheckAndPrint(newPosition, objects)).toEqual(true);
     });
   });
 });
